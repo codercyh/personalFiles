@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+    
+    </head>
+    <body>
+        <div id="d1">
+            <h3 class="h3">新闻标题</h3>
+            <p>徐州迎来冷空气</p>
+            <p class="info">希望明天变暖</p>
+            <b class="info">希望明天不要下雨</b>
+        </div>
+    
+    </body>
+    <script>
+        $(function () {
+            /*设置id为h3的标签的字体颜色*/
+            // $(".h3").css("color", "red");
+            // $(".h3").css({color:"red",backgroundColor:"green",fontSize:"30px"});
+            // $('p').css("color","red");
+            // $(".info").css("color","red");
+            $("b.info").css("color","blue");
+            
+        });
+    </script>
+</html>

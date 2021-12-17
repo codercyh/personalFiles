@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript"></script>
+    <script src="jquery-3.1.0.min.js"></script>
+    <style>
+        div{
+            height: 200px;
+            width: 200px;
+            background-color: pink;+
+            display: none;
+        }
+        .div-active{
+            display: block;
+        }
+        .btn-active{
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+<button type="button" class="btn-active">按钮1</button>
+<button type="button">按钮2</button>
+<button type="button">按钮3</button>
+<div class="div-active">内容1</div>
+<div>内容2</div>
+<div>内容3</div>
+<script>
+    $('button').click(function (){
+        $(this).addClass("btn-active").siblings('button').removeClass('btn-active');
+        $('div').eq($(this).index()).addClass("div-active").siblings("div").removeClass('div-active')
+    });
+</script>
+</body>
+</html>

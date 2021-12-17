@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+    </head>
+    <body>
+
+    </body>
+    <script>
+        /*存储内容到本地*/
+        localStorage.setItem("username", 'zhangsanfeng');
+        /*从本地取值*/
+        console.log(localStorage.getItem('username'));
+        /*根据指定的key来删除删除本地存储的值*/
+        localStorage.removeItem("username");
+        console.log(localStorage.removeItem("username"));
+        /*获取本地存储的数量*/
+        console.log(localStorage.length);
+        /*根据存储内容下标获取key*/
+        console.log(localStorage.key(1));
+        /*删除本地所有的存储的值(全部存储)*/
+        localStorage.clear();
+
+
+        /*
+        * sessionStorage和localStorage的区别
+        * localStorage永久存储不会过期,除非手动删除
+        * sessionStorage存储有效期为一次会话有效
+        *
+        * 要求value的值都是字符串类型的
+        * cookie对于value的要求是不允许存储中文的
+        * */
+
+        localStorage.setItem("username",'admin');
+        localStorage.setItem("password",'123456');
+        // localStorage.setItem()
+
+        /*
+        * JSON的概念:一种数据格式,主要用来前后端进行数据交互的
+        * JSON要求key用双引号包起来
+        * JSON对象格式,优点可以像对象一样,根据key来操作value
+        * JSON另外一种情况是json字符串,就是普通字符串,但是里面内容是json格式
+        * let json = "{'username':'admin','password','123'}"//json字符串用来前后端交互
+        *
+        * */
+
+        let jsnobj = {
+            username:"admin",
+            password:"123"
+        }
+        console.log(jsnobj);
+        /*json对象转换字符串*/
+        console.log(JSON.stringify(jsnobj));
+        let jsonstr = '{"username":"admin","password","123"}';
+        console.log(jsonstr);
+        /*json格式字符串转成json对象*/
+        console.log(JSON.parse(jsonstr));
+        setInterval(function () {
+
+        },2000)
+
+
+
+
+
+
+
+        /*JS如何进行URL编码*/
+        let name = "张三";
+        let name2 = encodeURI(name);
+        console.log(name2);
+        let name3 = decodeURI(name2);
+        console.log(name3);
+    </script>
+</html>

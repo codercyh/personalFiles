@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+    </head>
+    <body>
+        <form action="登录.html">
+            <div>
+                <label for="username">用户名</label>
+                <input type="text" name="username" id="username" placeholder="请输入用户名">
+            </div>
+            <div>
+                <label for="password">密码</label>
+                <input type="password" name="password" id="password" placeholder="请输入密码">
+            </div>
+            <div>
+                <button type="button" id="reg">注册</button>
+                <button type="button" id="login">登录</button>
+            </div>
+        </form>
+
+    </body>
+    <script>
+        $(function () {
+            $("#login").click(function () {
+                let username = $("#username").val();
+                if (!username) {
+                    alert("请输入用户名");
+                    return;
+                }
+                let password = $('#password').val();
+                if (!password) {
+                    alert("请输入密码");
+                    return;
+                }
+                let userList = localStorage.getItem("userList") || "[]";
+                userList = JSON.parse(userList);
+                let flag = false;
+                for (let i = 0; i < userList.length; i++) {
+                    if (userList[i].username === username && userList[i].password === password) {
+                        flag = true;
+                        break
+                    }
+                }
+                if (flag) {
+                    alert("登录成功")
+                } else {
+                    alert("用户名或密码错误")
+                }
+            });
+            $("#reg").click(function () {
+                location.href = "注册.html";
+            });
+        });
+
+    </script>
+</html>

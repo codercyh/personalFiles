@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+
+    </head>
+    <body>
+        <script>
+            /*
+            * window.onload和jQuery的ready函数区别：
+            * 1.window.onload只能有一个,如果存在多个，则后面的覆盖前面的，ready函数可以有无数个，按照顺序执行（执行次数不同）
+            * 2.ready函数在DOM渲染完毕则自动执行，window.onload需要等待页面所有资源加载完毕才执行(执行时机不同)
+            * */
+            window.onload = function (){
+                console.log("onload1");
+            }
+            window.onload = function (){
+                console.log("onload2");
+            }
+            
+            $(document).ready(function (){
+                console.log("ready");
+            });
+            $(function (){
+                console.log("简写形式")
+            });
+        </script>
+    </body>
+</html>

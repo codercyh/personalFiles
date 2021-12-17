@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+        <style>
+            div{
+                height: 400px;
+                width: 400px;
+                background-color: pink;
+            }
+	        span{
+		        display: block;
+		        height: 200px;
+		        width: 200px;
+		        background-color: yellow;
+	        }
+        </style>
+    </head>
+    <body>
+	    <div>
+		    <span>
+			    <a href="https://www.baidu.com" id="baidu1">baidu1</a>
+			    <!--使用js 来处理a标签的默认事件-->
+			    <a href="javascript:;" id="baidu2">baidu2</a>
+			    <a href="javascript:void(0);" id="baidu3">baidu3</a>
+		    </span>
+	    </div>
+    </body>
+
+    <script>
+        // window.onload = function (){
+        //     document.querySelector('div').onmousemove = function (ev){
+        //         ev = window.event || ev;
+        //         console.log(ev.x,ev.y);
+        //     }
+		//
+        // }
+        $(function (){
+            // $('div').mousemove(function (ev){
+            //     console.log("基于屏幕左上角的坐标(浏览器窗口左上角):"+ev.screenX,ev.screenY);
+            //     console.log("基于页面左上角的坐标(不计算滚动条/可视区域):"+ev.clientX,ev.clientY);
+            //     console.log("基于页面左上角的坐标(计算滚动条):"+ev.pageX,ev.pageY);
+            //     console.log('\n');
+            // });
+            // $('body').keydown(function (ev) {
+            //     console.log("键盘码"+ev.keyCode)
+            // });
+            /*绑定事件传参*/
+	        $('div').on("click",{test:"测试"},function (ev) {
+	            /*获取事件绑定时传递的参数*/
+                console.log("你点是div标签");
+            });
+	        $('span').click(function (ev) {
+	            ev.stopPropagation();
+                console.log("你点的是span标签")
+            });
+	        $('#baidu1').click(function (ev) {
+	            ev.preventDefault();
+				alert("你点了baidu1标签");
+            });
+            $('#baidu2').click(function (ev) {
+                // ev.preventDefault();
+                alert("你点了baidu2标签");
+            });
+            $('#baidu3').click(function (ev) {
+                // ev.preventDefault();
+                alert("你点了baidu3标签");
+                //可以中终止事件冒泡和标签的默认行为
+                return false;
+            });
+        });
+    </script>
+</html>

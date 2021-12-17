@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+    </head>
+    <body>
+        <div>
+            <h2></h2>
+            <form>
+                <div>
+                    <label for="username">用户名</label>
+                    <input type="text" name="username" id="username" placeholder="请输入用户名">
+                </div>
+                <div>
+                    <label for="password">密码</label>
+                    <input type="password" name="" id="password" placeholder="请输入密码">
+                </div>
+                <div>
+                    <label for="city">所在城市</label>
+                    <select id="city">
+                        <option value="">[请选择]</option>
+                        <option value="1">北京</option>
+                        <option value="2">上海</option>
+                        <option value="3">深圳</option>
+                        <option value="4">广州</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="address">详细地址</label>
+                    <textarea name="address" id="address" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <input type="checkbox" id="check" value="ok">我已阅读《<a href="#">用户协议</a>》
+                </div>
+                <div>
+                    <h3>注意事项：</h3>
+                    <ol>
+                        <li>上课不许睡觉</li>
+                        <li><b>上课不许睡觉</b></li>
+                        <li>上课不许睡觉</li>
+                    </ol>
+                </div>
+                <button type="button" id="get">获取内容</button>
+                <button type="button" id="set">设置内容</button>
+            </form>
+        </div>
+        
+    </body>
+    <script>
+        $('#get').click(function () {
+            console.log($('#username').val());
+            console.log($('#password').val());
+            console.log($('#city').val());
+            console.log($('#address').val());
+            console.log($('#check').prop("checked"));
+            console.log($('ol li').text());
+            /*text会取到所有的内容组成字符串*/
+            console.log($('li').text());
+            /*html取匹配到匹配的第一个内容*/
+            console.log($('li').html());
+            console.log($('li:eq(1)').html());
+            console.log($('li').eq(1).html());
+        });
+        $('#set').click(function () {
+           // $('li').text("我是更新后的内容");
+            /*
+            * 参数一:被设置内容的下标
+            * 参数二:被设置标签的原始内容
+            * */
+           $('li').text(function (index,el) {
+               // console.log(index);
+               // console.log(el);
+               return "回调函数中的内容"+(index+1);
+           });
+           /*设置下拉框*/
+           $('#city').val(4);
+           $('input[type = checkbox]').val('ok');
+           $("#address").val("我的地址");
+            $('#username').val(function (index,value) {
+                return "函数内容";
+            });
+
+        });
+    </script>
+</html>

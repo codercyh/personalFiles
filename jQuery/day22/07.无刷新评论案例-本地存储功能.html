@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>无刷新评论</title>
+        <script src="jquery-3.1.0.js"></script>
+        <style>
+            #main {
+                width: 960px;
+                margin: 0 auto;
+            }
+
+            .apply div {
+                display: flex;
+                align-items: center;
+                margin: 10px;
+
+            }
+
+            .apply div lable {
+                width: 100px;
+            }
+
+            .apply-item {
+                margin: 25px 25px 25px 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <div id="content">
+                <h2>哈登想抱大腿???</h2>
+                <p>
+                    但是到目前为止，哈登本以为过来是抱着欧文跟杜兰特的大腿，放弃了一定的球权可以轻松的组织好自己的比赛，但是事不为己，
+                    赛季过半，欧文和杜兰特偶尔因伤缺席，哈登不得不再拿出火箭时的进攻重担，进攻组织重担，
+                    从火箭时期的场均37分钟到篮网这边高达38分钟的场均出场时间确实比火箭还累，本以为自己来到篮网，
+                    欧文跟杜兰特可以分担自己的压力，谁知道过来还是自己当老大
+                </p>
+            </div>
+            <div id="msg">
+                <div class="apply">
+                    <div>
+                        <lable for="nickName">评论人</lable>
+                        <input type="text" name="nickName" id="nickName" placeholder="请输入昵称">
+                    </div>
+                    <div>
+                        <lable for="appContent">评论内容</lable>
+                        <textarea name="appContent" id="appContent" rows="10" cols="30"></textarea>
+                    </div>
+                    <div>
+                        <label></label>
+                        <button type="button" id="sub">提交</button>
+                    </div>
+                </div>
+                <div class="apply-list">
+                    <div class="apply-item">
+                        <div class="item-nickname">昵称:张三</div>
+                        <div class="item-content">楼主说的对!</div>
+                        <div class="item-time">2021-4-1 11:29:30</div>
+                    </div>
+                    <div class="apply-item">
+                        <div class="item-nickname">昵称:李四</div>
+                        <div class="item-content">楼主说的对!</div>
+                        <div class="item-time">2021-4-1 11:29:30</div>
+                    </div>
+                    <div class="apply-item">
+                        <div class="item-nickname">昵称:王五</div>
+                        <div class="item-content">楼主说的对!</div>
+                        <div class="item-time">2021-4-1 11:29:30</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </body>
+    <script>
+        $(function () {
+            getList();
+            $('#sub').click(function () {
+                let nickName = $("#nickName").val();
+                if (!nickName) {
+                    alert("昵称不能为空");
+                    return;
+                }
+                let appContent = $('#appContent').val();
+                if (!appContent) {
+                    alert("评论内容不能为空");
+                    return;
+                }
+                let time = new Date().toLocaleString();
+
+
+                /*清空输入框*/
+                $('input,textarea').val("");
+                let appList = localStorage.getItem("appList")||"[]";
+                appList = JSON.parse(appList);
+                appList = appList.reverse();
+                let appObj = {
+                    nickName: nickName,
+                    appContent: appContent,
+                    time: time
+                };
+                appList.push(appObj);
+                appList = JSON.stringify(appList);
+                localStorage.setItem("appList", appList);
+                getList();
+            });
+        });
+
+        function getList() {
+            let appList = localStorage.getItem('appList') || "[]";
+            /*转换json的字符串为json对象*/
+            appList = JSON.parse(appList);
+            /*遍历数组*/
+            let html = '';
+            for (let i = 0; i < appList.length; i++) {
+                let obj = appList[i];
+                html += '<div class="apply-item">\n' +
+                    '                        <div class="item-nickname">昵称:' + obj.nickName + '</div>\n' +
+                    '                        <div class="item-content">' + obj.appContent + '</div>\n' +
+                    '                        <div class="item-time">' + obj.time + '</div>\n' +
+                    '                    </div>'
+                $('.apply-list').empty();
+                $('.apply-list').append(html);
+            }
+        }
+    </script>
+</html>

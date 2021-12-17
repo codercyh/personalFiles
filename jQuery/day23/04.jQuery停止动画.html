@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+        <style>
+            div{
+                height: 200px;
+                width: 200px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <button type="button" id="start">开始</button>
+        <button type="button" id="stop">停止</button>
+        <div>开始停止动画效果演示</div>
+
+    </body>
+    <script>
+        $(function (){
+           $('#start').click(function (){
+               $('div').animate({marginLeft:'200px'},2000)
+               .animate({width:'400px'},2000)
+               .animate({fontSize:'30px'},2000)
+               .animate({opacity:'0.3'},2000)
+               .animate({marginTop:'200px',height:'400px'},2000)
+           });
+           $('#stop').click(function (){
+               /*
+               * stop函数参数如下
+               * 第一个参数是布尔类型:是否清除队列
+               * 第二个参数是布尔类型:是否跳转到最终结果
+               * */
+
+              // 不传递任何参数等价于传递两个false,表示当前动画立即停止,自动执行后续动画
+              // $('div').stop();
+
+              // 立即完成当前动画,后续动画不会执行
+              //  $('div').stop(true,true);
+
+              // 立即停止当前动画,后续动画不会执行
+              //  $('div').stop(true,false);
+
+              // 立即完成当前动画,后续动画继续执行
+              //  $('div').stop(false,true);
+
+               // 专用的终止动画,立即调到最后的效果
+               //  $('div').finish()
+           });
+        });
+    </script>
+</html>

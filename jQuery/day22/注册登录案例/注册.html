@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+    </head>
+    <body>
+        <form action="登录.html">
+            <div>
+                <label for="username">用户名</label>
+                <input type="text" name="username" id="username" placeholder="请输入用户名">
+            </div>
+            <div>
+                <label for="password">密码</label>
+                <input type="password" name="password" id="password" placeholder="请输入密码">
+            </div>
+            <div>
+                <label for="password2">确认密码</label>
+                <input type="password" name="password2" id="password2" placeholder="请再次输入密码">
+            </div>
+            <div>
+                <button type="button" id="reg">注册</button>
+                <button type="button" id="login">登录</button>
+            </div>
+        </form>
+    </body>
+    <script>
+
+        $("#reg").click(function () {
+            let username = $("#username").val();
+            if (!username) {
+                alert("请输入用户名");
+                return;
+            }
+            let password = $('#password').val();
+            if (!password) {
+                alert("请输入密码");
+                return;
+            }
+            let password2 = $('#password2').val();
+            if (password != password2) {
+                alert("密码不一致");
+                return;
+            }
+            let userList = localStorage.getItem("userList") || "[]";
+            userList = JSON.parse(userList);
+            let userObj = {
+                username: username,
+                password: password
+            };
+            userList.push(userObj);
+            userList = JSON.stringify(userList);
+            localStorage.setItem("userList", userList);
+            alert("注册成功");
+        });
+        $("#login").click(function () {
+            location.href = "登录.html";
+        });
+
+
+    </script>
+</html>

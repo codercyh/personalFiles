@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.min.js"></script>
+        
+    </head>
+    <body>
+        <p>hello world!</p>
+        <script>
+            let  p =document.getElementsByTagName('p')[0];
+            /*变量p就是DOM对象，innerText是属性*/
+            p.innerText = "你被修改了";
+            /*获取jQuery对象*/
+            let p2= $('p');
+            /*变量p2就是jQuery对象，text()就是jQuery对象的方法*/
+            p2.text('你被jQuery修改了');
+            
+            
+            /*DOM对象转jQuery对象*/
+            // $(p).text("DOM转换jQuery对象成功");
+            
+            /*jQuery对象转DOM对象使用get(index)的方式或者数组取值的方式来进行，jQuery对象是一个伪数组*/
+            // p2.get(0).innerText = "jQuery转DOM成功1";
+            p2[0].innerText = "jQuery转DOM成功2";
+        </script>
+    </body>
+</html>

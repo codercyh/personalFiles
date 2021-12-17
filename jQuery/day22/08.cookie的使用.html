@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>cookie</title>
+        <script src="jquery-3.1.0.js"></script>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        /*获取cookie*/
+        let ck = document.cookie;
+        console.log(ck);
+        /*获取指定的cookie的时间*/
+        let cks = ck.split('; ');
+        for (let i = 0; i <cks.length ; i++) {
+            // console.log(cks[i]);
+            let c= cks.split("=");
+            if (c[0] =='info'){
+                console.log(c[0]);
+            }
+        }
+        /*设置cookie*/
+        // document.cookie = 'info= admin';
+        /*多条cookie可以叠加*/
+        /*相同的key内容会覆盖内容*/
+        // document.cookie = 'age = 18';
+        // document.cookie = 'age = 20'
+        let date = new Date();
+        /*设置七天有效期*/
+        date.setDate(date.getDate()+7);
+        document.cookie = 'sex = boy;expires = ' +date;
+        /*删除cookie到方案是把有效期的时间设置为之前的时间*/
+        let date2 = new Date(date-1);
+        document.cookie = 'age = 123435;expires = '+date2;
+    </script>
+</html>

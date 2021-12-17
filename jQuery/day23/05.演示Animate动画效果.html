@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="animate.css">
+        <script src="jquery-3.1.0.js"></script>
+        <style>
+            div {
+                height: 200px;
+                width: 200px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <button type="button" id="jump">弹跳</button>
+        <button type="button" id="fadeIn">淡入</button>
+        <button type="button" id="fadeOut">淡出</button>
+        <button type="button" id="zoomIn">放大入场</button>
+        <button type="button" id="zoomOut">放大离场</button>
+        <div></div>
+    </body>
+    <script>
+        $(function () {
+            $('#jump').click(function () {
+                $('div').addClass('animated infinite bounce');
+            });
+            $('#fadeIn').click(function () {
+                $('div').addClass("animated fadeIn");
+            });
+            $('#fadeOut').click(function () {
+                $('div').addClass("animated fadeOut");
+            });
+            $('#zoomIn').click(function () {
+                $('div').addClass("animated zoomIn");
+            });
+            $('#zoomOut').click(function () {
+                $('div').addClass("animated zoomOut");
+            });
+
+        });
+    </script>
+</html>

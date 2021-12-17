@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body,.bg{
+    height: 100%;
+    width: 100%;
+}
+body{
+    position: relative;
+}
+.bg{
+    display: none;
+    transition: all 1s;
+}
+.bg:nth-child(1){
+    background: url("../images/1.jpg") no-repeat center/cover;
+}
+.bg:nth-child(2){
+    background: url("../images/2.jpg") no-repeat center/cover;
+}
+.bg:nth-child(3){
+    background: url("../images/3.jpg") no-repeat center/cover;
+}
+.bg:nth-child(4){
+    background: url("../images/4.jpg") no-repeat center/cover;
+}
+.bg-active{
+    display: block;
+}
+.main{
+    position: absolute;
+    width: 1000px;
+    height: 400px;
+    left: 0;
+    top: 0;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+}
+.main ul{
+    list-style: none;
+}
+.main ul li{
+    float: left;
+    width: 100px;
+    height: 400px;
+    transition: all 1s;
+}
+.main ul li.li-active{
+    width: 700px;
+
+}
+.main ul li:nth-child(1){
+    background: url("../images/1.jpg") no-repeat center/cover;
+}
+.main ul li:nth-child(2){
+    background: url("../images/2.jpg") no-repeat center/cover;
+}
+.main ul li:nth-child(3){
+    background: url("../images/3.jpg") no-repeat center/cover;
+ }
+.main ul li:nth-child(4){
+    background: url("../images/4.jpg") no-repeat center/cover;
+}
+
+.main ul li div{
+    height: 400px;
+    width: 100px;
+    background-color: rgba(0,0,0,.5);
+}
+.main ul li div p{
+    color: #fff;
+    padding: 40px;
+    opacity: 5;
+}

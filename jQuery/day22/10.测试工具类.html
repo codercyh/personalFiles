@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+        <script src="MyUtils.js"></script>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        setItem("key",'value');
+        setItem("key1","value1",2);
+        console.log(getItem("key1"));
+        removeItem('key1');
+        console.log(cookieSize());
+        console.log(key(0));
+        console.log(key(1));
+        clear();
+        console.log(cookieSize());
+    </script>
+</html>

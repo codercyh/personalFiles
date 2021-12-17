@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+        <style>
+            #main{
+                height: 200px;
+                width: 200px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <p id="p1">我是初始内容 </p>
+        </div>
+        
+    </body>
+    <script>
+        /*创建jQuery对象*/
+        let p2 = $('<p title="我是新加入的标签">我也是一个p标签</p>');
+
+        /*在main的最后面追加标签*/
+        $("#main").append(p2);
+        /*将p2标签追加到main的最后*/
+        p2.appendTo($('#main'));
+
+        /*在main的最前面添加*/
+        $("#main").prepend(p2);
+        p2.prependTo($('#main'));
+
+
+        /*在后面添加标签(兄弟节点)*/
+        $("#main").after(p2);
+        /*在前面添加标签(兄弟节点)*/
+        $("#mian").before(p2)
+
+    </script>
+</html>

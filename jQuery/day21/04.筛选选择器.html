@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+    </head>
+    <body>
+      <div id="d1">
+        <p>d1儿子辈</p>
+        <div id="d2">
+          <p>d1孙子辈</p>
+          <div id="d3">
+              <ul>
+                  <li>选项1</li>
+                  <li>选项2</li>
+                  <li>选项3</li>
+                  <li>选项4</li>
+                  <li>选项5</li>
+                  <li>选项6</li>
+                  
+              </ul>
+          </div>
+        </div>
+          <b>d1的儿子B标签2</b>
+          <p>d1的二儿子辈</p>
+          <b>d1的儿子B标签</b>
+          <p id="p1">d1的小儿子p标签</p>
+          <p>d1的小儿子p标签2</p>
+          
+          <b>d1的儿子B标签3</b>
+      </div>
+        
+        <script>
+            $(function (){
+                /*子代选择器*/
+               // $("#d1>p").css("color","red");
+               // $("#d1").children("p").css("color","yellow");
+               /*后代选择器*/
+                // $("#d1 p").css("color","blue");
+                // $("#d1").find("p").css("color","blue");
+                
+                
+                /*兄弟选择器*/
+                /* 查找p1紧邻下一个指定的p标签*/
+                // $("#p1+p").css("color","purple");
+                // $("#p1").next().css("color","purple");
+                
+                /*查找p1上一个兄弟结点，且结点为b*/
+                // $("#p1~b").css("color","orange");
+                // $("#p1").prev().css("color","orange");
+                
+                
+                /*查找p1以外的标签*/
+                // $("#d1").siblings("p").css("color","green");
+                
+                
+                /*匹配指定下标的标签 */
+                // $("li").eq(2).css("color","orange");
+                
+                
+                /*设置li中的偶数下标变红色*/
+                $("li:even").css("color","orange");
+                /*设置li中的奇数下标变绿色*/
+                $("li:odd").css("color","green");
+                
+            });
+        </script>
+    </body>
+</html>

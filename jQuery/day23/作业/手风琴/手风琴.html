@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/index.css">
+	<script src="../jquery-3.1.0.js"></script>
+	<!--    <script src="js/index.js"></script>-->
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="bg"></div>
+    <div class="bg bg-active"></div>
+    <div class="bg"></div>
+
+    <div class="main">
+        <ul>
+            <li><div><p>英雄联盟</p></div></li>
+            <li><div><p>穿越火线</p></div></li>
+            <li><div><p>王者荣耀</p></div></li>
+            <li class="li-active"><div><p>使命召唤</p></div></li>
+        </ul>
+    </div>
+</body>
+<script>
+	$(function () {
+	    $('li').each(function (index,element) {
+            console.log(index);
+            $(element).mouseover(function () {
+                $('li').each(function (i,el) {
+                    $(el).removeAttr('class');
+                    $('.bg').removeClass('bg-active');
+                });
+                $(this).addClass('li-active');
+                $('.bg').eq(index).addClass('bg-active').fadeToggle(2000);
+            });
+        })
+
+
+
+
+
+    });
+</script>
+</html>

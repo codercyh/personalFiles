@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+        <style>
+            div{
+                width: 200px;
+                height: 200px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <p>你别点我</p>
+        <div id="d1">
+            <button>我是按钮</button>
+        </div>
+    </body>
+    <script>
+        /*事件绑定简写形式*/
+        // $("p").click(function () {
+        //     alert('不要点我')
+        // });
+        /*一次绑定多个事件（1.7版本以后不推荐使用）*/
+        // $("p").bind("click mouseover",function (){
+        //    alert("bind绑定多个事件")
+        // });
+        /*解除所有事件的绑定*/
+        // $("p").unbind();
+        /*解除指定事件*/
+        // $("p").unbind("mouseover");
+        // $("p").on("click",function (){
+        //     alert("on绑定事件")
+        // });
+        /*解绑所有事件 推荐使用off*/
+        // $("p").off();
+
+
+
+        /*参数一表示事件名
+        * 参数二表示委托对象，委托对象必须是绑定对象的后代元素，并且给的是选择器
+        * 参数三表示要执行的事件*/
+        // $("#d1").on("click","button",function (){
+        //    alert("事件委托");
+        // });
+
+        /*主动触发事件*/
+        $("p").click(function (){
+           $(this).css("color","red");
+        });
+        /*主动触发click事件*/
+        // $("p").trigger("click");
+        /*通过鼠标进入div的事件触发p标签的单击事件*/
+        $("#d1").mouseover(function (){
+            $("p").trigger("click");
+        });
+    </script>
+</html>

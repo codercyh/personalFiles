@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<script src="jquery-3.1.0.js"></script>
+	</head>
+	<body>
+		<ul>
+			<li>选项1</li>
+			<li>选项2</li>
+			<li id="li3">选项3</li>
+			<li>选项4</li>
+			<li>选项5</li>
+		</ul>
+		<div>
+			<p>p1</p>
+			<b>b1</b>
+			<p>p2</p>
+			<b>b2</b>
+			<p>p3</p>
+			<b>b3</b>
+		</div>
+		
+	</body>
+	<script>
+		/*链式操作时,当选择器变化时,后续操作会自动匹配到已经变化的选择器上*/
+		/*使用end()函数来改变jq选择器的选择,恢复到上一次选择的内容*/
+		// $('#li3').css("color","red").siblings().css("color","green").end().css('color','blue');
+		// $('li').each(function (index,element) {
+        //     console.log(index);
+        //     console.log(element);
+        //     console.log($(element));
+        // });
+        // console.log($('li').index($('#li3')));
+        // console.log($('li').index(document.getElementById("li3")));
+
+		/*index不传参的情况下自动获取是自己所在的范围内中所有兄弟节点中的下标*/
+        // console.log($('p').index());
+        // console.log($('b').index());
+        // /*index给定一个jq对象或dom对象后只会匹配能找到的对象中所在的下标*/
+        // console.log($('b').index($('b')));
+
+
+        console.log($('#b2').index());
+        /*index 参数给定一个选择器,返回#b2所有b标签中的下标*/
+        console.log($('#b2').index('b'));
+
+        /*释放jQuery控制权,赋值给jf变量*/
+		let jf = $.noConflict();
+		jf('#li3').prop('title','jf请赐予我力量');
+	</script>
+</html>

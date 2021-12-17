@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+<!--        <script type="text/javascript" src="index.js"></script>-->
+
+        <style>
+            table {
+
+                border-collapse: collapse;
+                text-align: center;
+            }
+
+            input[type= "text"] {
+                width: 20px;
+                text-align: center;
+            }
+        </style>
+        <script src="jquery-3.1.0.js"></script>
+    </head>
+    <body>
+        <table width="50%" id="myTable" border="1">
+            <caption>购物车</caption>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" class="checkAll">
+                    </th>
+                    <th>序号</th>
+                    <th>商品名</th>
+                    <th>商品单价</th>
+                    <th>商品数量</th>
+                    <th>商品总价</th>
+
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="checkbox" class="check"></td>
+                <td>1</td>
+                <td>汤臣一品</td>
+                <td>27000</td>
+                <td>
+                    <button type="button" class="jian">-</button>
+                    <input type="text" value="1">
+                    <button type="button" class="jia" id="jia1">+</button>
+                </td>
+                <td>27000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="check"></td>
+                <td>2</td>
+                <td>小米扫地机器人</td>
+                <td>1899</td>
+                <td>
+                    <button type="button" class="jian">-</button>
+                    <input type="text" value="1">
+                    <button type="button" class="jia" id="jia2">+</button>
+                </td>
+                <td>1899</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="check"></td>
+                <td>3</td>
+                <td>比亚迪汉</td>
+                <td>288888</td>
+                <td>
+                    <button type="button" class="jian">-</button>
+                    <input type="text" value="1">
+                    <button type="button" class="jia" id="jia3">+</button>
+                </td>
+                <td>288888</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="check"></td>
+                <td>4</td>
+                <td>百事可乐</td>
+                <td>3</td>
+                <td>
+                    <button type="button" class="jian">-</button>
+                    <input type="text" value="1">
+                    <button type="button" class="jia" id="jia4">+</button>
+                </td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="check"></td>
+                <td>5</td>
+                <td>泡面</td>
+                <td>4</td>
+                <td>
+                    <button type="button" class="jian">-</button>
+                    <input type="text" value="1">
+                    <button type="button" class="jia" id="jia5">+</button>
+                </td>
+                <td>4</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="5">总价</td>
+                <td>3000</td>
+            </tr>
+            </tfoot>
+        </table>
+        <button type="button" id="btn1">全选</button>
+        <button type="button" id="btn2">反选</button>
+    </body>
+    <script>
+        $(function () {
+            $(".checkAll").click(function (){
+               $(".check").prop("checked",$(this).prop("checked"));
+            });
+            $("#btn1").click(function (){
+                $("input[type = 'checkbox']").prop("checked",true)
+            });
+            $("#btn2").click(function (){
+                /*获取所有复选框*/
+                let checks = $("input[type = checkbox]");
+                for (let i = 0; i < checks.length; i++) {
+                    // let ck = checks[i];
+                    // ck.checked = !ck.checked;
+                    // checks[i].checked = !checks[i].checked;
+                    $(checks[i]).prop("checked",!$(checks[i]).prop("checked"));
+                }
+            });
+            /*设置input标签的value属性,选择器找到多少 就设置多少*/
+            // $('input[type = text]').val(12);
+            /*获取input标签的value属性，选择器找到多个标签也只会获取第一个匹配标签的value属性*/
+            // console.log($('input[type = text]').val());
+
+            for (let i = 0; i < $(".jia").length; i++) {
+                $(".jia").eq(i).click(function (){
+                    let value = parseInt($('input[type = text]').eq(i).val());
+                    value = value + 1;
+                    $('input[type = text]').eq(i).val(value);
+                });
+            }
+
+
+            for (let i = 0; i < $(".jian").length; i++) {
+                $(".jian").eq(i).click(function (){
+                    let value = parseInt($('input[type = text]').eq(i).val());
+                    if (value>1){
+                        $('input[type = text]').eq(i).val(--value);
+                    }
+                });
+            }
+
+        });
+    </script>
+</html>

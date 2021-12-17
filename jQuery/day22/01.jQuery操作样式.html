@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+        <style>
+            .red{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <p>这是一个p标签</p>
+    </body>
+    <script>
+        /*原生JS设置字体颜色*/
+        // document.querySelector("p").style.color = 'red';
+        // document.querySelector("p").className = 'red';
+        // document.querySelector("p").classList.add('red');
+        // document.querySelector("p").setAttribute('class','red');
+
+        /*jQuery设置字体颜色*/
+        // $('p').css("color",'red');
+        // $('p').prop('class','red');
+        // $('p').addClass('red');//删除样式removeClass()
+
+
+        /*
+        * 使用attr和prop操作样式与addClass操作样式有什么区别
+        * 1.attr和prop是用来操作属性的，class也是属性之一，所以可以被操作
+        * 2.addClass是专门用来操作样式的，只能控制class一个属性
+        * 3.attr和prop都是覆盖操作，addClass是追加操作
+        * 4.推荐使用addClass
+        *
+        * */
+        /*hasClass用来判断某个元素是否含有该样式*/
+        console.log($('p').hasClass('red'));
+
+
+    </script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+        <style>
+            div{
+                height: 200px;
+                width: 200px;
+                position: relative;
+                margin-top:20px;
+            }
+            #d1{
+                background-color: pink;
+            }
+            #d2{
+                background-color: aqua;
+            }
+        </style>
+    </head>
+    <body>
+        <button type="button" id="moveRight">向右移动</button>
+        <button type="button" id="keepMoveRight">持续向右移动</button>
+        <button type="button" id="easing">执行效果区别</button>
+        <div id="d1"></div>
+        <div id="d2"></div>
+
+    </body>
+    <script>
+        $(function (){
+            $('#moveRight').click(function (){
+                /*
+                * animate函数参数如下
+                * 对象类型:设置要执行动画的CSS属性(必填)
+                * 速度:执行动画所需要的时间(必填)
+                * 执行效果:swing缓速,linear匀速
+                * 回调函数:动画执行完毕后自动调用的函数
+                * jquery不支持transform动画效果
+                * */
+                $('#d1').animate({left:'200px',opacity:'0.3'},3000);
+            });
+            $('#easing').click(function (){
+               $('#d1').animate({left:'600px'},3000,'swing');
+               $('#d2').animate({left:'600px'},3000,'linear');
+            });
+            $('#keepMoveRight').click(function (){
+                /*以+=的方式实现在动画效果下的继续追加能力*/
+                $('#d2').animate({left:'+=200px'},1000);
+            });
+        });
+
+    </script>
+</html>

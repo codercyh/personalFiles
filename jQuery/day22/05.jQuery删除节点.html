@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+        <style>
+            div{
+                height: 200px;
+                width: 200px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <button type="button" id="empty">deleteOne</button>
+        <button type="button" id="remove">deleteTwo</button>
+        <button type="button" id="detach">deleteThree</button>
+        <div id="d1">
+            <ul>
+                <li>选项1</li>
+                <li>选项2</li>
+                <li>选项3</li>
+            </ul>
+        </div>
+        
+    </body>
+    <script>
+        $(function () {
+            $("#d1").click(function () {
+                alert("我回来了");
+            });
+            $("#empty").click(function () {
+                /*
+                * empty清空元素所有内部内容
+                * remove删除元素本身
+                * detach删除元素本身
+                * 三个返回值都是被操作标签的jQuery对象
+                * remove 携带的元素事件绑定被一起删除 无法再次追加该元素的事件
+                * detach 携带的元素事件绑定保留下来 可以再次追加该元素的事件
+                * */
+                /*清空d1内部所有元素*/
+                $('#d1').empty();
+            });
+            $("#remove").click(function () {
+                $("#d1").remove();
+            });
+            $("#detach").click(function () {
+                $("#d1").detach();
+            });
+        });
+
+    </script>
+</html>

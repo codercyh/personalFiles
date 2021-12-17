@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="jquery-3.1.0.js"></script>
+        <style>
+            #main{
+                height: 200px;
+                width: 200px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <button type="button" id="show">显示</button>
+        <button type="button" id="hide">隐藏</button>
+        <button type="button" id="toggle">切换隐藏</button>
+        <button type="button" id="slideUp">滑入</button>
+        <button type="button" id="slideDown">滑出</button>
+        <button type="button" id="toggleSlide">切换滑入滑出</button>
+        <button type="button" id="fadeIn">淡入</button>
+        <button type="button" id="fadeOut">淡出</button>
+        <button type="button" id="toggleFade">切换淡入淡出</button>
+        <button type="button" id="fadeTo">指定透明</button>
+        <button type="button" id="toggleFn">切换函数</button>
+        <div id="main"></div>
+
+    </body>
+    <script>
+        $(function (){
+            /*
+            * 内置动画的参数如下：
+            * 1.Number类型的毫秒数.默认400/给String类型的单词表示normal(400),fast(600),slow(200)
+            * 2.function类型的回调函数,表示动画执行完毕自动执行的函数
+            * */
+            $('#show').click(function (){
+               $('div').show('slow');
+            });
+            $('#hide').click(function (){
+                $('div').hide(2000,function (){
+                    alert("我隐藏起来啦");
+                });
+            });
+            $('#slideUp').click(function (){
+                $('div').slideUp();
+            });
+            $('#slideDown').click(function (){
+                $('div').slideDown();
+            });
+            $('#toggleSlide').click(function (){
+                $('div').slideToggle(5000);
+            });
+            $('#fadeIn').click(function (){
+                $('div').fadeIn();
+            });
+            $('#fadeOut').click(function (){
+                $('div').fadeOut();
+            });
+            $('#toggleFade').click(function (){
+                $('div').fadeToggle();
+            });
+            $('#fadeTo').click(function (){
+                /*
+                * fadeTo参数如下
+                * 执行时间
+                * 指定透明白,0完全透明,1不透明
+                * 表示执行效果方式,可选值,swing表示缓动,是默认值,或者是linear表示匀速
+                * 动画执行完毕的回调函数
+                * */
+                $('div').fadeTo('slow',0.4,'swing',function (){
+                    alert("我现在透明度在40%");
+                });
+            });
+            /*
+            * 切换隐藏和显示
+            * */
+            $('#toggle').click(function (){
+                $('div').toggle();
+            });
+
+            /*
+            * toggle参数为多个函数时,会挨个自动执行这些函数
+            * */
+            $('#toggleFn').toggle(function (){
+                console.log("回调函数1");
+            });
+        });
+
+    </script>
+</html>
